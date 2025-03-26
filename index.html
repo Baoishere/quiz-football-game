@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Kids Soccer Quiz</title>
+</head>
+<body>
+    <div class="game-container">
+        <div class="score">Score: <span id="score">0</span></div>
+        <div class="question-box" id="question"></div>
+        
+        <img src="goal.png" class="goal-img" alt="Khung thành">
+        <img src="goalkeeper.png" class="goalkeeper" id="goalkeeper" alt="Thủ môn">
+        <img src="ball.png" class="ball" id="ball" alt="Quả bóng">
+
+        <div class="options">
+            <div class="option-group left">
+                <div class="option" onclick="checkAnswer('A')">A: 3</div>
+                <div class="option" onclick="checkAnswer('B')">B: 4</div>
+            </div>
+            <div class="option-group right">
+                <div class="option" onclick="checkAnswer('C')">C: 5</div>
+                <div class="option" onclick="checkAnswer('D')">D: 6</div>
+            </div>
+        </div>
+        
+        <!-- Màn hình kết thúc -->
+        <div class="end-screen" id="endScreen">
+            <h1>Chúc mừng!</h1>
+            <p>Bạn đã hoàn thành trò chơi!</p>
+            <p>Điểm cuối cùng: <span id="finalScore">0</span></p>
+            <button class="restart-btn" onclick="restartGame()">Chơi lại</button>
+        </div>
+        
+        <!-- Nút quản lý câu hỏi -->
+        <div class="manage-buttons">
+            <button class="manage-btn" id="addQuestionBtn">Thêm Câu Hỏi</button>
+            <button class="manage-btn" id="manageQuestionsBtn">Quản Lý Câu Hỏi</button>
+        </div>
+        
+        <!-- Form thêm/sửa câu hỏi -->
+        <div class="question-form" id="questionForm">
+            <h2 id="formTitle">Thêm Câu Hỏi Mới</h2>
+            <select id="questionCategory" required>
+                <option value="toan">Toán học</option>
+                <option value="tiengviet">Tiếng Việt</option>
+                <option value="khoahoc">Khoa học</option>
+                <option value="thethao">Thể thao</option>
+                <option value="tiengtrung">Tiếng Trung</option>
+                <option value="khac">Khác</option>
+            </select>
+            <input type="text" id="newQuestion" placeholder="Nhập câu hỏi..." required>
+            <input type="text" id="optionA" placeholder="Đáp án A" required>
+            <input type="text" id="optionB" placeholder="Đáp án B" required>
+            <input type="text" id="optionC" placeholder="Đáp án C" required>
+            <input type="text" id="optionD" placeholder="Đáp án D" required>
+            <select id="correctAnswer" required>
+                <option value="">Chọn đáp án đúng</option>
+                <option value="A">A</option>
+                <option value="B">B</option>
+                <option value="C">C</option>
+                <option value="D">D</option>
+            </select>
+            <div class="form-buttons">
+                <button class="submit-btn" id="submitQuestionBtn">Thêm</button>
+                <button class="cancel-btn" onclick="closeQuestionForm()">Hủy</button>
+            </div>
+        </div>
+        
+        <!-- Quản lý câu hỏi -->
+        <div class="question-manager" id="questionManager">
+            <h2>Quản Lý Câu Hỏi</h2>
+            <div class="filter-options">
+                <select id="categoryFilter" onchange="filterQuestions()">
+                    <option value="all">Tất cả chủ đề</option>
+                    <option value="toan">Toán học</option>
+                    <option value="tiengviet">Tiếng Việt</option>
+                    <option value="khoahoc">Khoa học</option>
+                    <option value="thethao">Thể thao</option>
+                    <option value="tiengtrung">Tiếng Trung</option>
+                    <option value="khac">Khác</option>
+                </select>
+            </div>
+            <div class="question-list" id="questionList">
+                <!-- Danh sách câu hỏi sẽ được thêm vào đây -->
+            </div>
+            <div class="form-buttons">
+                <button class="cancel-btn" onclick="closeQuestionManager()">Đóng</button>
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
